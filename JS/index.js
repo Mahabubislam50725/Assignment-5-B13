@@ -83,17 +83,18 @@ const displayIssue = (issues) => {
         });
 }
 
-document.getElementById('all-btn')?.addEventListener('click', () => {
+document.getElementById('all-btn').addEventListener('click', () => {
     displayIssue(allIssues);
 });
 
-document.getElementById('open-btn')?.addEventListener('click', () => {
+document.getElementById('open-btn').addEventListener('click', () => {
     const openIssues = allIssues.filter(issue => issue.status === 'open');
     displayIssue(openIssues);
 });
 
-document.getElementById('closed-btn')?.addEventListener('click', () => {
+document.getElementById('closed-btn').addEventListener('click', () => {
     const closedIssues = allIssues.filter(issue => issue.status === 'closed');
     displayIssue(closedIssues);
 });
+
 loadIssue();
