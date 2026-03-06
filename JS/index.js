@@ -1,8 +1,13 @@
+
+
+let allIssues = [];
+
 const loadIssue = () => {
     fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
         .then(res => res.json())
         .then(data => {
-            displayIssue(data.data)
+            allIssues = data.data;
+            displayIssue(allIssues);
         })
 }
 
@@ -22,6 +27,7 @@ const loadIssue = () => {
 //       "createdAt": "2024-01-15T10:30:00Z",
 //       "updatedAt": "2024-01-15T10:30:00Z"
 //     }
+
 
 
 
@@ -45,10 +51,10 @@ const displayIssue = (issues) => {
                     
 
                  ${issue.priority == 'high'
-                ? `<p class="btn btn-active btn-error rounded-xl">${issue.priority}</p>`
+                ? `<p class="btn btn-active btn-error rounded-xl text-xl">${issue.priority}</p>`
                 : issue.priority == 'medium'
-                    ? `<p class="btn btn-active btn-warning rounded-xl">${issue.priority}</p>`
-                    : `<p class="btn btn-active rounded-xl">${issue.priority}</p>`}
+                    ? `<p class="btn btn-active btn-warning rounded-xl text-xl">${issue.priority}</p>`
+                    : `<p class="btn btn-active rounded-xl text-xl">${issue.priority}</p>`}
             
                     
                 </div>
@@ -71,6 +77,23 @@ const displayIssue = (issues) => {
         `
 
         issueContainer.appendChild(div);
-    });
+
+
+       
+        });
 }
+
+document.getElementById('all-btn')?.addEventListener('click', () => {
+    displayIssue(allIssues);
+});
+
+document.getElementById('open-btn')?.addEventListener('click', () => {
+    const openIssues = allIssues.filter(issue => issue.status === 'open');
+    displayIssue(openIssues);
+});
+
+document.getElementById('closed-btn')?.addEventListener('click', () => {
+    const closedIssues = allIssues.filter(issue => issue.status === 'closed');
+    displayIssue(closedIssues);
+});
 loadIssue();
