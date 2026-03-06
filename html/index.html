@@ -49,10 +49,9 @@
     </header>
 
     <!-- Banner Button  -->
-    <section 
-    class="w-11/12 mx-auto mt-12">
+    <section class="w-11/12 mx-auto mt-12">
         <div class="banner-btn-container space-x-3 shadow-md p-5 rounded-sm ">
-            <button id="all-btn" class="btn btn-soft btn-primary">All</button>
+            <button id="all-btn" class="btn btn-soft btn-primary active">All</button>
             <button id="open-btn" class="btn btn-soft btn-primary">Open</button>
             <button id="closed-btn" class="btn btn-soft btn-primary">Close</button>
 
@@ -61,8 +60,7 @@
 
 
     <!-- Banner Section -->
-    <section 
-    class="w-11/12 mx-auto mt-12 flex justify-between items-center shadow-md p-5 rounded-sm ">
+    <section class="w-11/12 mx-auto mt-12 flex justify-between items-center shadow-md p-5 rounded-sm ">
         <div class="left-side flex items-center gap-2">
             <div>
                 <img src="../assets/Aperture.png" alt="">
@@ -90,23 +88,67 @@
     </section>
 
     <!-- Card Container -->
-    <section 
-    class="w-11/12 mx-auto mt-12 shadow-md p-5 rounded-sm ">
+    <section class="w-11/12 mx-auto mt-12 shadow-md p-5 rounded-sm ">
         <div id="issue-container" class="card-container grid grid-cols-1 lg:grid-cols-4 gap-5">
-            
+
         </div>
 
     </section>
-   
+
 
     <!-- Open Section -->
-     <section class="w-11/12 mx-auto mt-12 shadow-md p-5 rounded-sm ">
-        <div id="open-issue-container" class=" grid grid-cols-1 lg:grid-cols-4 gap-5" >
+    <section class="w-11/12 mx-auto mt-12 shadow-md p-5 rounded-sm ">
+        <div id="open-issue-container" class=" grid grid-cols-1 lg:grid-cols-4 gap-5">
 
         </div>
 
 
-     </section>
+    </section>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <div  id="issue-details" >
+
+               <!-- <div class="space-y-7 p-5 rounded-md">
+                <h1 class="text-3xl font-bold">Fix broken image uploads</h1>
+            <div class="flex items-center gap-4">
+                <button class="btn btn-success">Opened</button>
+                <p>Opened by : Fahim Ahmed</p>
+                <p>22/02/2026</p>
+            </div>
+            <div>
+                <p class="btn btn-error rounded-full">Bug</p>
+                <p class="btn btn-warning rounded-full">Warming</p>
+            </div>
+            <div>
+                <p class="text-neutral-500">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
+            </div>
+            <div class="flex gap-35 bg-neutral-200 p-5 rounded-md">
+                <div class="space-y-2">
+                    <p class="text-neutral-500">Assignee:</p> 
+                    <p class=" font-bold">Fahim Ahmed</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-neutral-500">Priority:</p>
+                    <p class="btn btn-active btn-error rounded-full">high</p>
+                </div>
+               
+            </div>
+            </div> -->
+
+
+            </div>
+
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
 
     <script src="../JS/index.js"></script>
 </body>
