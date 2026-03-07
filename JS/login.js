@@ -7,7 +7,7 @@ document.getElementById('signIn-btn').addEventListener('click', function () {
 
     if (UserName.toLowerCase() === 'admin' && UserPassword.toLowerCase() === 'admin123') {
         alert('Login Successful')
-        window.location.assign("./main.html")
+        window.location.assign("./html/main.html")
     }
     else {
         alert('Invalid Username or Password');
