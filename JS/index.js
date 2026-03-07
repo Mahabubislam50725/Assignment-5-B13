@@ -3,11 +3,13 @@
 let allIssues = [];
 
 const loadIssue = () => {
+    
     fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
         .then(res => res.json())
         .then(data => {
             allIssues = data.data;
             displayIssue(allIssues);
+            
         })
 }
 
@@ -78,6 +80,18 @@ const displayIssueDetails = (issue) => {
 
 }
 
+const ManageSpinner=(status)=>{
+    if(status==true){
+        document.getElementById("spinner").classList.remove("hidden");
+        document.getElementById("issue-container").classList.add("hidden");
+
+    }
+    else{
+         document.getElementById("issue-container").classList.remove("hidden");
+        document.getElementById("spinner").classList.add("hidden");
+    }
+}
+
 
 
 const displayIssue = (issues) => {
@@ -129,8 +143,9 @@ const displayIssue = (issues) => {
         div.addEventListener('click', () => displayIssueDetails(issue));
 
 
-
+       
     });
+    ManageSpinner(false);
 }
 
 const AllBtn = document.getElementById('all-btn');
@@ -140,26 +155,50 @@ const ClosedBtn = document.getElementById('closed-btn');
 
 
 AllBtn.addEventListener('click', () => {
+
+    ManageSpinner(true);
+
     OpenBtn.classList.remove('active')
     ClosedBtn.classList.remove('active');
     AllBtn.classList.add('active')
-    displayIssue(allIssues);
+
+    setTimeout(() => {
+        displayIssue(allIssues);
+    }, 200);
+
 });
 
+
 OpenBtn.addEventListener('click', () => {
+
+    ManageSpinner(true);
+
     AllBtn.classList.remove('active');
     OpenBtn.classList.remove('active');
     OpenBtn.classList.add('active')
+
     const openIssues = allIssues.filter(issue => issue.status === 'open');
-    displayIssue(openIssues);
+
+    setTimeout(() => {
+        displayIssue(openIssues);
+    }, 200);
+
 });
 
 ClosedBtn.addEventListener('click', () => {
+
+    ManageSpinner(true);
+
     AllBtn.classList.remove('active');
     OpenBtn.classList.remove('active');
     ClosedBtn.classList.add('active')
+
     const closedIssues = allIssues.filter(issue => issue.status === 'closed');
-    displayIssue(closedIssues);
+
+    setTimeout(() => {
+        displayIssue(closedIssues);
+    }, 200);
+
 });
 
 loadIssue();
