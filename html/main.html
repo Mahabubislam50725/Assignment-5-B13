@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Issues Tracker</title>
+    <link rel="shortcut icon" href="../assets/github-logo.png" type="image/x-icon">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+
+    <!-- Tailwind & Daisyui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Css -->
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="navbar bg-base-100 shadow-sm flex flex-col lg:flex-row gap-4 ">
+            <div class="flex-1">
+                <a class="btn btn-ghost text-3xl font-semibold"><i class="fa-brands fa-github "></i> GitHub Issues
+                    Tracker</a>
+            </div>
+            <div class="flex gap-2">
+                <input id="input-srh" type="text" placeholder=" Search issues..." class="input input-bordered w-24 md:w-auto" />
+                <div class="dropdown dropdown-end">
+                    <div>
+                        <div>
+                            <button id="btn-srh"class="btn btn-primary">+ New Issue</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Button  -->
+    <section class="w-11/12 mx-auto mt-12">
+        <div class="banner-btn-container space-x-3 shadow-md p-5 rounded-sm ">
+            <button id="all-btn" class="btn btn-soft btn-primary active">All</button>
+            <button id="open-btn" class="btn btn-soft btn-primary">Open</button>
+            <button id="closed-btn" class="btn btn-soft btn-primary">Close</button>
+
+        </div>
+    </section>
+
+
+    <!-- Banner Section -->
+    <section class="w-11/12 mx-auto mt-12 flex justify-between items-center shadow-md p-5 rounded-sm ">
+        <div class="left-side flex items-center gap-2">
+            <div>
+                <img src="../assets/Aperture.png" alt="">
+            </div>
+            <div>
+                <p id="banner-p" class="font-bold text-2xl">50 Issues</p>
+                <p>Track and manage your project issues</p>
+            </div>
+
+        </div>
+
+        <div class="right-side flex items-center gap-4">
+            <div class="flex items-center gap-1">
+                <img src="../assets/Open-Status.png" alt="">
+                <p>Open</p>
+            </div>
+
+            <div class="flex items-center gap-1">
+                <img src="../assets/Closed- Status .png" alt="">
+                <p>Close</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="spinner" 
+    class="flex justify-center items-center py-10 hidden ">
+
+        <span class="loading loading-spinner text-success"></span>
+
+    </section>
+   
+
+
+    <!-- Card Container -->
+    <section class="w-11/12 mx-auto mt-12 shadow-md p-5 rounded-sm ">
+        <div id="issue-container" class="card-container grid grid-cols-1 lg:grid-cols-4 gap-5">
+
+            
+
+        </div>
+
+    </section>
+
+    <section id="empty-issue " class="hidden">
+        
+    </section>
+
+
+
+    <!-- Open Section -->
+    <section class="w-11/12 mx-auto mt-12 shadow-md p-5 rounded-sm ">
+        <div id="open-issue-container" class=" grid grid-cols-1 lg:grid-cols-4 gap-5">
+
+        </div>
+
+
+    </section>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <div  id="issue-details" >
+
+              
+
+
+            </div>
+
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn btn-soft btn-primary">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="../JS/main.js"></script>
+</body>
+
+</html>
