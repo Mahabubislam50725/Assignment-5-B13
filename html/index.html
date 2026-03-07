@@ -35,11 +35,11 @@
                     Tracker</a>
             </div>
             <div class="flex gap-2">
-                <input type="text" placeholder=" Search issues..." class="input input-bordered w-24 md:w-auto" />
+                <input id="input-srh" type="text" placeholder=" Search issues..." class="input input-bordered w-24 md:w-auto" />
                 <div class="dropdown dropdown-end">
                     <div>
                         <div>
-                            <button class="btn btn-primary">+ New Issue</button>
+                            <button id="btn-srh"class="btn btn-primary">+ New Issue</button>
                         </div>
                     </div>
 
@@ -101,9 +101,16 @@
     <section class="w-11/12 mx-auto mt-12 shadow-md p-5 rounded-sm ">
         <div id="issue-container" class="card-container grid grid-cols-1 lg:grid-cols-4 gap-5">
 
+            
+
         </div>
 
     </section>
+
+    <section id="empty-issue " class="hidden">
+        
+    </section>
+
 
 
     <!-- Open Section -->

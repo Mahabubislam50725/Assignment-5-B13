@@ -3,13 +3,13 @@
 let allIssues = [];
 
 const loadIssue = () => {
-    
+    ManageSpinner(true);
     fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
         .then(res => res.json())
         .then(data => {
             allIssues = data.data;
             displayIssue(allIssues);
-            
+            ManageSpinner(false);
         })
 }
 
@@ -80,19 +80,16 @@ const displayIssueDetails = (issue) => {
 
 }
 
-const ManageSpinner=(status)=>{
-    if(status==true){
+const ManageSpinner = (status) => {
+    if (status == true) {
         document.getElementById("spinner").classList.remove("hidden");
         document.getElementById("issue-container").classList.add("hidden");
-
     }
-    else{
-         document.getElementById("issue-container").classList.remove("hidden");
+    else {
+        document.getElementById("issue-container").classList.remove("hidden");
         document.getElementById("spinner").classList.add("hidden");
     }
 }
-
-
 
 const displayIssue = (issues) => {
     const issueContainer = document.getElementById('issue-container');
@@ -145,7 +142,6 @@ const displayIssue = (issues) => {
 
        
     });
-    ManageSpinner(false);
 }
 
 const AllBtn = document.getElementById('all-btn');
@@ -155,50 +151,74 @@ const ClosedBtn = document.getElementById('closed-btn');
 
 
 AllBtn.addEventListener('click', () => {
-
     ManageSpinner(true);
-
     OpenBtn.classList.remove('active')
     ClosedBtn.classList.remove('active');
     AllBtn.classList.add('active')
-
     setTimeout(() => {
         displayIssue(allIssues);
+        ManageSpinner(false);
     }, 200);
-
 });
 
 
 OpenBtn.addEventListener('click', () => {
-
     ManageSpinner(true);
-
     AllBtn.classList.remove('active');
     OpenBtn.classList.remove('active');
     OpenBtn.classList.add('active')
-
     const openIssues = allIssues.filter(issue => issue.status === 'open');
-
     setTimeout(() => {
         displayIssue(openIssues);
+        ManageSpinner(false);
     }, 200);
-
 });
 
 ClosedBtn.addEventListener('click', () => {
-
     ManageSpinner(true);
-
     AllBtn.classList.remove('active');
     OpenBtn.classList.remove('active');
     ClosedBtn.classList.add('active')
-
     const closedIssues = allIssues.filter(issue => issue.status === 'closed');
-
     setTimeout(() => {
         displayIssue(closedIssues);
+        ManageSpinner(false);
     }, 200);
-
 });
 
 loadIssue();
+
+document.getElementById('btn-srh').addEventListener('click', () => {
+    AllBtn.classList.remove('active');
+    OpenBtn.classList.remove('active');
+    ClosedBtn.classList.remove('active');
+
+    const Input = document.getElementById('input-srh');
+    const searchValue = Input.value.trim();
+
+    if (!searchValue) {
+        displayIssue(allIssues);
+        return;
+    }
+
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+        .then(res => res.json())
+        .then((data) => {
+            const BannerParagraph = document.getElementById("banner-p");
+            
+            if (data.data.length === 0) {
+                const issueContainer = document.getElementById('issue-container');
+                issueContainer.innerHTML = `
+                    <div class="col-span-full flex flex-col items-center justify-center p-9 bg-red-200 rounded-md">
+                        <img class="mx-auto" src="../assets/alert-error.png" alt="">
+                        <h1 class="text-center text-2xl font-bold mt-4">No Issue Available</h1>
+                    </div>
+                `;
+                BannerParagraph.innerText = `${data.data.length} Issues`;
+            
+
+            } else {
+                displayIssue(data.data);
+            }
+        })
+})
