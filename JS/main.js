@@ -106,7 +106,7 @@ const displayIssue = (issues) => {
                 : 'border-t-purple-500'} h-full">
         
                 <div class="flex justify-between items-center ">
-                 ${issue.status == 'open' ? `<img src="../assets/Open-Status.png" alt="">` : `<img src="../assets/Closed- Status .png" alt="">`
+                 ${issue.status == 'open' ? `<img src="./assets/Open-Status.png" alt="">` : `<img src="./assets/Closed- Status .png" alt="">`
             }
                     
 
@@ -210,7 +210,7 @@ document.getElementById('btn-srh').addEventListener('click', () => {
                 const issueContainer = document.getElementById('issue-container');
                 issueContainer.innerHTML = `
                     <div class="col-span-full flex flex-col items-center justify-center p-9 bg-red-200 rounded-md">
-                        <img class="mx-auto" src="../assets/alert-error.png" alt="">
+                        <img class="mx-auto" src="./assets/alert-error.png" alt="">
                         <h1 class="text-center text-2xl font-bold mt-4">No Issue Available</h1>
                     </div>
                 `;
