@@ -27,20 +27,22 @@
 
 </head>
 
-<body class="container w-11/12 mx-auto ">
-    <div class="w-130 mx-auto shadow-2xl rounded-lg ">
-        <div class="space-y-4 p-7 mt-20 ">
-            <img class="mx-auto" src="./assets/github-logo.png" alt="">
-            <h1 class="font-semibold text-xl text-center">GitHub Issues Tracker</h1>
+<body class="w-full px-4 py-8 md:py-0">
+    <div class="w-full max-w-md mx-auto shadow-2xl rounded-lg mt-8 md:mt-20">
+        <div class="space-y-4 p-5 md:p-7">
+            <img class="mx-auto w-16 md:w-20" src="./assets/github-logo.png" alt="">
+            <h1 class="font-semibold text-lg md:text-xl text-center">GitHub Issues Tracker</h1>
             <p class="text-neutral-500 text-center">Sign in to manage your issues</p>
-             <div class="space-y-7">
+             
+            <div class="space-y-5 md:space-y-7">
                 <label class="font-bold" for="">Username:</label><br>
-             <input id="username-input" class="w-full text-xl rounded-md p-2" placeholder="Enter Your UserName" type="text"><br>
+             <input id="username-input" class="w-full text-base md:text-xl rounded-md p-2 border border-gray-300" placeholder="Enter Your UserName" type="text"><br>
              <label class="font-bold" for="">Password:</label><br>
-             <input id="password-input" class="w-full text-xl rounded-md p-2" placeholder="Enter Your Password" type="password"><br>
+             <input id="password-input" class="w-full text-base md:text-xl rounded-md p-2 border border-gray-300" placeholder="Enter Your Password" type="password"><br>
              <button id="signIn-btn" class="btn btn-primary w-full rounded-lg">Sign In</button>
+             
 
-             <div class="mx-auto space-y-2 text-green-600 text-center">
+             <div class="mx-auto space-y-2 text-green-600 text-center text-sm md:text-base">
                 <p>Defult Username: admin</p>
                 <p>Defult Password: admin123</p>
              </div>
